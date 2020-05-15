@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:customui="clr-namespace:DocumentFormat.OpenXml.Office2010.CustomUI;assembly=DocumentFormat.OpenXml" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:BookstoreXamarin"
+             x:Class="BookstoreXamarin.views.AddressDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="Brown" HeightRequest="50">
+                <Image HorizontalOptions="Start" Margin="10,0,0,0">
+                    <Image.Source>
+                        <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.BookOpen}"
+                    Size="30"
+                    Color="White" 
+                     />
+                    </Image.Source>
+                </Image>
+                <Label Text="Book Store" FontSize="16" Margin="45,15,10,10" TextColor="White"/>
+                <SearchBar  Placeholder="search books" StyleClass="SearchBar"
+                            HeightRequest="60" Margin="130,12,50,12" BackgroundColor="White" />
+            </Grid>
+            <StackLayout Margin="0,100,0,0">
+                <Grid>
+                    <Entry Placeholder="Name" x:Name="name"/>
+                    <Entry Placeholder="phone number" x:Name="phoneNumber"/>
+                </Grid>
+                <Grid>
+                    <Entry Placeholder="pin code" x:Name="pinCode"/>
+                    <Entry Placeholder="locality" x:Name="Locality"/>
+                </Grid>
+                <BoxView HeightRequest="50" WidthRequest="100"/>
+                <Entry x:Name="address" Placeholder="Address"/>
+                <Grid>
+                    <Entry Placeholder="city/town" x:Name="city"/>
+                    <Entry Placeholder="Land ark" x:Name="landMark"/>
+                </Grid>
+                <Label Text="Type"/>
+                <Grid>
+
+                    <Label Text="Home"/>
+                    <Label Text="work"/>
+                    <Label Text="other"/>
+                    <Grid>
+                        <controls:BindableRadioGroup x:Name="ansPicker"
+                                     Grid.Row="1"
+                                     FontName="AmericanTypewriter"
+                                     SelectedIndex="{Binding ItemSelected}"
+                                     VerticalOptions="Start" />
+                    </Grid>
+
+                </Grid>
+            </StackLayout>
+            <!--<customui:RadioGroup>
+            <RadioButton/>
+        </customui:RadioGroup>--> 
+            <Button Text="CONTINUE" Clicked="Continue" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Blue"/>
+            <Grid BackgroundColor="Black" VerticalOptions="EndAndExpand" Margin="0,0,0,10" HeightRequest="30">
+                <Label Text=" copyrights 2020 BookStore pvt ltd. All rights reserved" TextColor="White" FontSize="15"
+                   HeightRequest="20"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

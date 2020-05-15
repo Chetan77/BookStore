@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:BookstoreXamarin"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             x:Class="BookstoreXamarin.MainPage">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SearchBarStyle" TargetType="SearchBar">
+                <Setter Property="SearchCommand" Value="box"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid BackgroundColor="Brown" HeightRequest="70">
+            <Image HorizontalOptions="Start" Margin="10,0,0,0">
+                <Image.Source>
+                    <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.BookOpen}"
+                    Size="30"
+                    Color="White" 
+                     />
+                </Image.Source>
+            </Image>
+            <Label Text="Book Store" FontSize="16" Margin="45,15,10,10" TextColor="White"/>
+            <SearchBar  Placeholder="search books" x:Name="seacuButtonPressed" TextChanged="seacuButtonPressed_TextChanged"  StyleClass="SearchBar" Margin="130,10,50,10" BackgroundColor="White" />
+            <ImageButton Margin="0,0,10,0" HorizontalOptions="End" BackgroundColor="Brown" Clicked="GoToCart">
+                <ImageButton.Source>
+                    <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.ShoppingCart}"
+                    Size="30"
+                    Color="White"    
+                     />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+
+        <Grid Margin="0,0,0,0" HeightRequest="35" Padding="10,15">
+            <Label Text="Books" FontAttributes="Bold" FontSize="Medium"/>
+            <Label x:Name="numberOfBooks" FontSize="Medium" Margin="60,0,0,0"/>
+            <Grid>
+                <BoxView BackgroundColor="White" HeightRequest="60"/>
+                <Picker TextColor="BurlyWood"  x:Name="sort" HeightRequest="60" Title="select by relevence" FontSize="Medium" HorizontalOptions="EndAndExpand"  />
+            </Grid>
+        </Grid>
+        <CollectionView x:Name="bookList" Margin="0,5,0,20" Grid.Row="1" ItemsSource="{Binding bookList}" SelectionMode="Single"
+                        VerticalScrollBarVisibility="Never" SelectedItem="{Binding SelectedBook}"
+                        SelectionChangedCommand="{Binding SelectionCommand}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20" HorizontalItemSpacing="20" Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" HeightRequest="200" WidthRequest="145">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding ImageName}" x:Name="imageName" Margin="10" Aspect="AspectFill" WidthRequest="125"
+                                           HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <StackLayout VerticalOptions="End" Grid.Row="1">
+                            <Label Text="{Binding BookName}" x:Name="bookName" FontAttributes="Bold" FontSize="Medium"/>
+                            <Label Text="{Binding AuthorName}" x:Name="authorName" FontSize="Medium" />
+                            <Label Text="{Binding Price}" x:Name="price" FontSize="Small" FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button  Text="ATB" TextColor="Red" BackgroundColor="CadetBlue" FontAttributes="Bold"
+                                         HorizontalOptions="Start" HeightRequest="40" WidthRequest="70" CornerRadius="15" 
+                                         Clicked="AddedToCart" />
+                                <Button  Text="ATW" TextColor="Red" BackgroundColor="White" FontAttributes="Bold"
+                                         HorizontalOptions="End" HeightRequest="40" WidthRequest="70" CornerRadius="15"
+                                         Clicked="AddToWhishList"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Label Text=""/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--<Grid Padding="10" x:Name="bookList" HeightRequest="200" WidthRequest="145">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="{Binding ImageName}" x:Name="imageName" Margin="10" Aspect="AspectFill" WidthRequest="125"
+                                           HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" />
+            <StackLayout VerticalOptions="End" Grid.Row="1">
+                <Label Text="{Binding BookName}" x:Name="bookName" FontAttributes="Bold" FontSize="Medium"/>
+                <Label Text="{Binding AuthorName}" x:Name="authorName" FontSize="Medium" />
+                <Label Text="{Binding Price}" x:Name="price" FontSize="Small" FontAttributes="Bold" />
+                <StackLayout Orientation="Horizontal">
+                    <Button  Text="ATB" TextColor="Red" BackgroundColor="CadetBlue" FontAttributes="Bold"
+                             x:Name="addToBag"
+                                         HorizontalOptions="Start" HeightRequest="40" WidthRequest="70" CornerRadius="15" 
+                                         Clicked="AddedToCart" />
+                    <Button  Text="ATW" TextColor="Red" BackgroundColor="White" FontAttributes="Bold"
+                                        x:Name="addTowishList" HorizontalOptions="End" HeightRequest="40" WidthRequest="70" CornerRadius="15"
+                                         Clicked="AddToWhishList"/>
+                    -->
+        <!--<Button Grid.Row="4" Text="{Binding addToCart}" BackgroundColor="CadetBlue"  HorizontalOptions="Start" HeightRequest="20" Clicked="AddedToCart"/>-->
+        <!--
+                </StackLayout>
+            </StackLayout>
+            <Label Text=""/>-->
+
+        <Grid BackgroundColor="Black" VerticalOptions="EndAndExpand" Margin="0,0,0,10" HeightRequest="30">
+            <Label Text=" copyrights 2020 BookStore pvt ltd. All rights reserved" TextColor="White" FontSize="15"
+                   HeightRequest="20"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
+    

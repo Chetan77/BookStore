@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:BookstoreXamarin" xmlns:vm="clr-namespace:BookstoreXamarin.ViewModel" xmlns:views="clr-namespace:BookstoreXamarin.views"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             x:Class="BookstoreXamarin.views.Cart">
+    <ContentPage.BindingContext>
+        <vm:BookViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Grid BackgroundColor="Brown" HeightRequest="50">
+            <Image HorizontalOptions="Start" Margin="10,0,0,0">
+                <Image.Source>
+                    <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.BookOpen}"
+                    Size="30"
+                    Color="White" 
+                     />
+                </Image.Source>
+            </Image>
+            <Label Text="Book Store" FontSize="16" Margin="45,15,10,10" TextColor="White"/>
+            <SearchBar  Placeholder="search books" StyleClass="SearchBar"
+                            HeightRequest="60" Margin="130,12,50,12" BackgroundColor="White" />
+            <ImageButton Margin="0,0,10,0" HorizontalOptions="End" BackgroundColor="Brown">
+                <ImageButton.Source>
+                    <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.ShoppingCart}"
+                    Size="30"
+                    Color="White"    
+                     />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+        <Grid Padding="10" HeightRequest="200" WidthRequest="145">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="download.jpg" x:Name="imageName" Aspect="AspectFill" WidthRequest="125"
+                                           HeightRequest="180" HorizontalOptions="Start" VerticalOptions="Start" />
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="100,0,20,0" >
+                <Label  Text="love" x:Name="bookName" FontAttributes="Bold" FontSize="Medium"/>
+                <Label  Text="god" x:Name="authorName" FontSize="Small" />
+                <Label  Text="100" x:Name="price" FontSize="Medium" FontAttributes="Bold" />
+                <Grid  WidthRequest="100" BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <ImageButton Clicked="ValueDecrese" HorizontalOptions="Start" Margin="0,0,30,0">
+                        <ImageButton.Source>
+                            <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.MinusCircle}"
+                    Size="30"
+                    Color="White" 
+                     />
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label x:Name="value" WidthRequest="30" HeightRequest="20" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
+                    <ImageButton Clicked="ValueIncrese" Margin="30,0,0,0" HorizontalOptions="End">
+                        <ImageButton.Source>
+                            <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.PlusCircle}"
+                    Size="30"
+                    Color="White" 
+                     />
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Button Text="remove" BorderColor="Red"/>
+                </Grid>
+            </StackLayout>
+            <Button  Text="place order" TextColor="White" BackgroundColor="CadetBlue" FontAttributes="Bold" VerticalOptions="End"
+                     HorizontalOptions="End" HeightRequest="40" CornerRadius="20" Clicked="PlaceOrder"/>
+        </Grid>
+        <Grid BackgroundColor="Black" VerticalOptions="EndAndExpand" Margin="0,0,0,10" HeightRequest="30">
+            <Label Text=" copyrights 2020 BookStore pvt ltd. All rights reserved" TextColor="White" FontSize="15"
+                   HeightRequest="20"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:BookstoreXamarin"
+             x:Class="BookstoreXamarin.views.OrderSummary">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="Brown" HeightRequest="50">
+                <Image HorizontalOptions="Start" Margin="10,0,0,0">
+                    <Image.Source>
+                        <FontImageSource 
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static local:IconFont.BookOpen}"
+                    Size="30"
+                    Color="White" 
+                     />
+                    </Image.Source>
+                </Image>
+                <Label Text="Book Store" FontSize="16" Margin="45,15,10,10" TextColor="White"/>
+                <SearchBar  Placeholder="search books" StyleClass="SearchBar"
+                            HeightRequest="60" Margin="130,12,50,12" BackgroundColor="White" />
+            </Grid>
+            <Label Text="order summary"/>
+            <Grid Padding="10" HeightRequest="200" WidthRequest="145">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Source="download.jpg" Aspect="AspectFill" WidthRequest="125"
+                                           HeightRequest="180" HorizontalOptions="Start" VerticalOptions="Start" />
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="100,0,20,0" >
+                    <Label  Text="love" FontAttributes="Bold" FontSize="Medium"/>
+                    <Label  Text="god" FontSize="Small" />
+                    <Label  Text="100" FontSize="Medium" FontAttributes="Bold" />
+                </StackLayout>
+                <Button  Text="checkout" TextColor="White" BackgroundColor="CadetBlue" FontAttributes="Bold" VerticalOptions="End"
+                     HorizontalOptions="End" HeightRequest="40" CornerRadius="20" Clicked="successPage"/>
+            </Grid>
+
+            <Grid BackgroundColor="Black" VerticalOptions="EndAndExpand" Margin="0,0,0,10" HeightRequest="30">
+                <Label Text=" copyrights 2020 BookStore pvt ltd. All rights reserved" TextColor="White" FontSize="15"
+                   HeightRequest="20"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
